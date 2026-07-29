@@ -1,0 +1,162 @@
+# Allow-list of (dataset, model, task) combinations.
+# score_run.py MUST reject any run whose (dataset, model, task) triple is not
+# listed here. Nothing here is inferred silently - entries marked `inferred: true`
+# were reconstructed from a partially garbled planning doc and should be
+# confirmed by whoever owns that dataset before being treated as final.
+#
+# Sources: "Data nao dung duoc cho model nao" table + video dataset table,
+# internal planning doc "Ke hoach hoan tat Phase 1".
+
+datasets:
+  tep:
+    modality: tabular
+    notes: >
+      Tennessee Eastman Process. Model list reconstructed from ALPI's row,
+      which states its own list is "giong TEP" (same as TEP) - the source
+      row for TEP itself was cut off before its model column.
+    entries:
+      - model: xgboost_lightgbm
+        tasks: [B1]
+        inferred: true
+      - model: chronos2
+        tasks: [B1]
+        inferred: true
+      - model: rule_based
+        tasks: [B1]
+        inferred: true
+      - model: majority_class
+        tasks: [B1]
+        inferred: true
+      - model: llm_text_only
+        tasks: [B1]
+        via: text serialization
+        inferred: true
+      - model: cosmos3_nano
+        tasks: [B1]
+        via: chart rendering
+        inferred: true
+      - model: qwen2vl
+        tasks: [B1]
+        via: chart rendering
+        inferred: true
+      # V-JEPA 2 explicitly excluded: tabular data has no video/motion signal.
+
+  alpi:
+    modality: event_log_tabular
+    notes: ALPI/PIADE packaging alarm logs.
+    entries:
+      - model: xgboost_lightgbm
+        tasks: [B0, B5]
+      - model: chronos2
+        tasks: [B0, B5]
+      - model: rule_based
+        tasks: [B0, B5]
+      - model: majority_class
+        tasks: [B0, B5]
+      - model: llm_text_only
+        tasks: [B0, B5]
+        via: text serialization
+      - model: cosmos3_nano
+        tasks: [B0, B5]
+        via: chart rendering
+      - model: qwen2vl
+        tasks: [B0, B5]
+        via: chart rendering
+      - model: gpt4o
+        tasks: [B5]
+        via: text serialization
+      - model: gemini
+        tasks: [B5]
+        via: text serialization
+      # V-JEPA 2 explicitly excluded: not video/motion data.
+
+  mimii:
+    modality: audio
+    notes: >
+      Only audio source in the suite. Needs a dedicated audio-capable model
+      (e.g. Whisper-style encoder) or a spectrogram-as-image conversion for
+      MLLMs. Low priority per planning doc.
+    entries:
+      - model: xgboost_lightgbm
+        tasks: [B3]
+        via: audio feature extraction
+      - model: cosmos3_nano
+        tasks: [B3]
+        via: spectrogram-as-image
+        inferred: true
+      - model: qwen2vl
+        tasks: [B3]
+        via: spectrogram-as-image
+        inferred: true
+
+  mmad:
+    modality: static_image
+    notes: >
+      8366 images, 38 product types, 39672 MCQ questions. Published ICLR 2025
+      benchmark, GPT-4o published baseline ~74.9%. License is academic -
+      check before any commercial use. Not committed to this repo (download
+      via HuggingFace per data/README.md).
+    entries:
+      - model: cosmos3_nano
+        tasks: [B3]
+      - model: qwen2vl
+        tasks: [B3]
+      - model: gpt4o
+        tasks: [B3]
+      - model: gemini
+        tasks: [B3]
+      # V-JEPA 2 excluded: static images, no motion.
+      # xgboost_lightgbm/chronos2 excluded: not tabular data.
+
+  hatrec:
+    modality: video
+    notes: >
+      Already tested. KNOWN issues from prior runs: shortcut solvable via
+      static color/appearance, and train/test leak detected for V-JEPA 2
+      (reported 1.0 F1 - not trustworthy until leak is fixed). Keep
+      leak_check.py / shortcut_check.py mandatory for this dataset.
+    entries:
+      - model: vjepa2
+        tasks: [B1]
+      - model: cosmos3_nano
+        tasks: [B1]
+      - model: qwen2vl
+        tasks: [B1]
+
+  assembly101:
+    modality: video
+    notes: >
+      Sample version has only 1 real mistake event (n=1) - download the full
+      version before drawing conclusions. Task id inferred from prose
+      ("anomaly detection", "mistake event"), not a clean B-code in the source.
+    entries:
+      - model: vjepa2
+        tasks: [B3]
+        inferred: true
+      - model: cosmos3_nano
+        tasks: [B3]
+        inferred: true
+      - model: qwen2vl
+        tasks: [B3]
+        inferred: true
+
+  industreal:
+    modality: video
+    notes: >
+      Not yet tried. Has more errors than Assembly101, prioritized for
+      Fault-OOD testing. Task ids inferred from prose ("Fault-OOD test"),
+      not a clean B-code in the source.
+    entries:
+      - model: vjepa2
+        tasks: [B3, B10]
+        inferred: true
+      - model: cosmos3_nano
+        tasks: [B3, B10]
+        inferred: true
+      - model: qwen2vl
+        tasks: [B3, B10]
+        inferred: true
+
+# Tasks B2, B4, B6, B7, B8, B9 have no dataset entries yet anywhere above:
+# per the planning doc, they require ground-truth SOP/action-outcome data
+# that doesn't exist in the current public data sources (Phase 2 work).

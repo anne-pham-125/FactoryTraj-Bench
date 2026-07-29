@@ -1,0 +1,73 @@
+# Model registry: 5 groups, each answering a distinct research question.
+# No group substitutes for another - all 5 are run wherever compat_matrix.yaml allows it.
+# Model ids below are the canonical names used in results/ filenames and
+# evaluation/examples/ folder names. No person names anywhere in this file.
+groups:
+  - id: mllm_zero_shot
+    name: MLLM zero-shot
+    needs_training: false
+    research_question: >
+      Does a general-purpose multimodal model's existing knowledge suffice
+      for industrial tasks, with no task-specific training?
+    models:
+      - id: cosmos3_nano
+        display_name: Cosmos3-Nano Reasoner
+      - id: qwen2vl
+        display_name: Qwen2-VL-2B
+
+  - id: embedding_probe
+    name: Embedding-based (linear probe)
+    needs_training: true
+    research_question: >
+      Does an embedding-native architecture (no tokenization) have an
+      advantage over token-based architectures on the same tasks?
+    models:
+      - id: vjepa2
+        display_name: V-JEPA 2 (ViT-L)
+
+  - id: baseline_specialized
+    name: Specialized baseline
+    needs_training: true
+    needs_training_note: "true for xgboost_lightgbm and chronos2; rule_based and majority_class need no training"
+    research_question: >
+      Without any general-purpose model, how far does a purpose-built
+      classical method get? This is the floor other groups are compared against.
+    models:
+      - id: xgboost_lightgbm
+        display_name: XGBoost / LightGBM
+        needs_training: true
+      - id: chronos2
+        display_name: Chronos-2
+        needs_training: true
+      - id: rule_based
+        display_name: Rule-based
+        needs_training: false
+      - id: majority_class
+        display_name: Persistence / majority-class
+        needs_training: false
+
+  - id: llm_text_only
+    name: LLM text-only
+    needs_training: false
+    research_question: >
+      Is language ability alone (no vision) sufficient to solve the task,
+      given logs serialized to text plus retrieved SOP context? Isolates the
+      role of "vision" from "reasoning".
+    models:
+      - id: llm_text_only
+        display_name: Strong text-only LLM (non-VLM)
+        # NOTE: the specific model was left unspecified as "1 LLM manh"
+        # in the planning doc - pick one strong text LLM and record its
+        # exact name/version in the report, not in this config.
+
+  - id: commercial_api
+    name: Commercial API
+    needs_training: false
+    research_question: >
+      Where does the best model currently on the market land, directly
+      compared against MMAD's published GPT-4o baseline (~74.9%)?
+    models:
+      - id: gpt4o
+        display_name: GPT-4o
+      - id: gemini
+        display_name: Gemini

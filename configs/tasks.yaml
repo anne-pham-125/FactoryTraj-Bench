@@ -1,0 +1,83 @@
+# Task suite B0-B10.
+# Source: internal planning doc "Ke hoach hoan tat Phase 1" (task suite table).
+# Each task_id must have a matching handler module in src/worldbench/tasks/.
+tasks:
+  - id: B0
+    name: Schema and tag understanding
+    input: Tag names, samples, units, partial documentation
+    output: Type, unit, range, role and relationships
+    primary_metric: exact_semantic_accuracy
+    secondary_metrics: []
+
+  - id: B1
+    name: State estimation
+    input: 60-second multimodal window
+    output: Machine mode and latent operational state
+    primary_metric: macro_f1
+    secondary_metrics: [brier_score]
+
+  - id: B2
+    name: Cycle and event segmentation
+    input: Continuous logs/video
+    output: Cycle boundaries, stop onset and recovery
+    primary_metric: event_f1
+    secondary_metrics: [timing_error]
+
+  - id: B3
+    name: Anomaly and fault localization
+    input: Signals, alarms and context
+    output: Anomaly interval and responsible subsystem
+    primary_metric: event_auprc
+    secondary_metrics: [topk_localization]
+
+  - id: B4
+    name: Causal diagnosis
+    input: Trajectory before and during interruption
+    output: Ranked causal mechanisms with evidence
+    primary_metric: top1_accuracy
+    secondary_metrics: [top3_accuracy]
+
+  - id: B5
+    name: Next-state/event prediction
+    input: Observation window and production context
+    output: Events/state in next 30-120 seconds
+    primary_metric: auprc
+    secondary_metrics: [brier_score, sequence_edit_distance]
+
+  - id: B6
+    name: SOP grounding
+    input: Current state, alarms and SOP
+    output: Applicable step, blocked steps and required checks
+    primary_metric: step_accuracy
+    secondary_metrics: [contradiction_rate]
+    # NOTE: source table row for this metric was garbled ("Step acciction rate").
+    # step_accuracy is a best-effort reconstruction — confirm the intended
+    # secondary metric name before treating this as final.
+
+  - id: B7
+    name: Workflow execution
+    input: Goal, state and available tools
+    output: Typed sequence of actions with preconditions
+    primary_metric: simulator_success
+    secondary_metrics: [constraint_violations]
+
+  - id: B8
+    name: Recovery action ranking
+    input: State, candidate actions and history
+    output: Ranked actions and expected recovery outcomes
+    primary_metric: recall_at_k
+    secondary_metrics: [ndcg, regret]
+
+  - id: B9
+    name: Action-conditioned outcome prediction
+    input: State plus candidate action
+    output: State/event distribution after action
+    primary_metric: calibration
+    secondary_metrics: [outcome_accuracy]
+
+  - id: B10
+    name: OOD recognition
+    input: Unseen machine, product or fault
+    output: Prediction or abstention
+    primary_metric: risk_coverage_curve
+    secondary_metrics: [unsafe_confidence]

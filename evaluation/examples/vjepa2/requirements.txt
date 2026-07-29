@@ -1,0 +1,3 @@
+# Add V-JEPA 2-specific dependencies here once embedding extraction is wired up
+# (e.g. torch, torchvision, the V-JEPA 2 model package). Kept separate from
+# the root requirements.txt since this environment can be heavier/GPU-specific.
