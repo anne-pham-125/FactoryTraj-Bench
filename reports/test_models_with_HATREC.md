@@ -1,4 +1,3 @@
-# 📊 BÁO CÁO PHÂN TÍCH KẾT QUẢ KAGGLE BENCHMARK (HATRec Dataset)
 
 Báo cáo tổng hợp và phân tích chuyên sâu các chỉ số thực nghiệm thu được từ quá trình đánh giá độc lập các mô hình Vision-Language Models (VLMs) trên Notebook Kaggle (`test-models-with-hatrec.ipynb`) đối với bộ dữ liệu **HATRec Industrial Assembly Video Dataset** (546 video clips, 7 lớp thao tác lắp ráp công nghiệp).
 
@@ -7,6 +6,7 @@ Báo cáo tổng hợp và phân tích chuyên sâu các chỉ số thực nghi�
 - Người test: Đức
 - Dataset: HATREC (546 videos)
 - Bài toán: Xác định hành động của công nhân trong video, phát triển từ báo cáo chạy trên Cosmos3-nano của anh Sơn
+- Link notebook: https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/evaluation/examples/qwen2vl/test-models-with-hatrec.ipynb
 ## 1. BẢNG TỔNG HỢP KẾT QUẢ THỰC NGHIỆM CHÍNH THỨC
 
 
