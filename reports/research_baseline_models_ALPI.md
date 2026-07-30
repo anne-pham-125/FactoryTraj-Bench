@@ -6,6 +6,7 @@
 
 > **Tập dữ liệu:** ALPI (Alarm Logs in Packaging Industry)  
 
+> **Notebook link** https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/evaluation/examples/xgboost_chronos/baseline-apli.ipynb
 ---
 
 ## 1. Đặt Vấn Đề & Mục Tiêu Nghiên Cứu (Research Objective)
