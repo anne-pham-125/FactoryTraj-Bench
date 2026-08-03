@@ -6,6 +6,7 @@
 
 > **Tập dữ liệu:** ALPI (Alarm Logs in Packaging Industry - PIADE Dataset)  
 
+> **Link notebook:** https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/ALPI_baseline_models.ipynb
 ---
 
 ## 1. Đặt Vấn Đề & Mục Tiêu Nghiên Cứu (Research Objective)
