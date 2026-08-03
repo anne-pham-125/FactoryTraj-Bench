@@ -4,6 +4,12 @@
 > **Chủ đề:** Đánh giá đa phương pháp (Ablation Study) trên bộ dữ liệu âm thanh công nghiệp MIMII làm mốc sàn đối chứng (Benchmark Floor) cho bài toán phát hiện bất thường (Task B3).  
 > **Tập dữ liệu:** MIMII (Malfunctioning Industrial Machine Investigation and Inspection)  
 
+> **Link Notebook**
+
+- https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/MIMII_fan.ipynb
+- https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/MIMII_pump.ipynb
+- https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/MIMII_slide.ipynb
+- https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/MIMII_valve.ipynb
 ---
 
 ## 1. Tổng Quan Bộ Dữ Liệu & Phương Pháp Tiếp Cận (Dataset & Methodology)
