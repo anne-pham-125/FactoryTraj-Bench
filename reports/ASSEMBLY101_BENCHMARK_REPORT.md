@@ -1,8 +1,10 @@
 # 📊 BÁO CÁO THỰC NGHIỆM VÀ PHÂN TÍCH TOÀN DIỆN BỘ DỮ LIỆU ASSEMBLY101 (ASSEMBLY101 BENCHMARK REPORT)
 
-> **Tác giả:** Nhóm Nghiên cứu Kỹ thuật AI  
+> **Tác giả:** Đức
 > **Chủ đề:** Đánh giá đối đầu (Head-to-Head Evaluation) giữa nhánh Mô hình Nhúng Video (V-JEPA 2 / DINOv2 Linear Probe) và nhánh Mô hình Nền tảng Đa phương thức (Qwen2-VL-2B Zero-shot VLM) cho **Task B1 (State & Action Recognition)** và **Task B3 (Fault & Anomaly Localization)**.  
-> **Tập dữ liệu:** Assembly101 (Procedural Activity & Action Dataset)  
+> **Tập dữ liệu:** Assembly101 (Procedural Activity & Action Dataset)
+> **Link notebook task B1:** https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/Assembly101_B1.ipynb
+> **Link notebook task B3:** https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/Assembly101_B3.ipynb
 
 ---
 
