@@ -14,7 +14,6 @@ results/*.json
 checkpoints/*
 !checkpoints/.gitkeep
 
-reports/*.md
 !reports/.gitkeep
 !reports/TEMPLATE.md
 
