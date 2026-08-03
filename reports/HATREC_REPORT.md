@@ -6,7 +6,7 @@ Báo cáo tổng hợp và phân tích chuyên sâu các chỉ số thực nghi�
 - Người test: Đức
 - Dataset: HATREC (546 videos)
 - Bài toán: Xác định hành động của công nhân trong video, phát triển từ báo cáo chạy trên Cosmos3-nano của anh Sơn
-- Link notebook: https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/evaluation/examples/qwen2vl/test-models-with-hatrec.ipynb
+- Link notebook: https://github.com/anne-pham-125/FactoryTraj-Bench/blob/main/notebooks/HATREC_VLMs.ipynb
 ## 1. BẢNG TỔNG HỢP KẾT QUẢ THỰC NGHIỆM CHÍNH THỨC
 
 
